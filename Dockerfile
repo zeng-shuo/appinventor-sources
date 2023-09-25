@@ -1,8 +1,7 @@
 FROM ubuntu
 
 
-RUN set -u && \
-    apt-get update && \
+RUN apt-get update && \
     apt-get install openjdk-8-jdk git ant && \
     git submodule update --init && \
     apt-get install -y apt-transport-https ca-certificates gnupg curl && \

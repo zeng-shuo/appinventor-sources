@@ -12,6 +12,6 @@ RUN set -u && \
     curl https://sdk.cloud.google.com | bash && \
     bash buildtools doctor && \
     cd appinventor && ant MakeAuthKey && ant && \
-    cd buildserver && ant RunLocalBuildServer && cd ../.. \
+    cd buildserver && ant RunLocalBuildServer && cd ../.. 
 
 CMD ["java_dev_appserver.sh","--port=8888","--address=0.0.0.0","appengine/build/war/"]

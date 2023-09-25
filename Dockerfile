@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y openjdk-8-jdk apt-transport-https ca-ce
     echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
     apt-get update && apt-get install -y google-cloud-cli && \ 
-    gcloud components install app-engine-java 
+    apt-get install google-cloud-sdk-app-engine-java
     #curl https://sdk.cloud.google.com | bash 
 RUN bash buildtools doctor 
 

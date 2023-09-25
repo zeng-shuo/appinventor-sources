@@ -11,4 +11,4 @@ RUN apt-get update && apt-get install -y openjdk-8-jdk apt-transport-https ca-ce
     curl https://sdk.cloud.google.com | bash 
 RUN bash buildtools doctor 
 
-CMD ["java_dev_appserver.sh","--port=8888","--address=0.0.0.0","appengine/build/war/"]
+CMD ["java_dev_appserver","--port=8888","--address=0.0.0.0","appengine/build/war/"]

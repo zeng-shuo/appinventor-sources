@@ -1,0 +1,29 @@
+name: build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out repository
+      - name: checkout branch
+        uses: actions/checkout@v3
+
+      # login docker
+      - name: login to dockerhub
+        uses: docker/login-action@v2.0.0
+        with:
+          username: ${{ secrets.DOCKER_UNAME }}
+          password: ${{ secrets.DOCKER_PASSWD }}
+
+      - name: build
+        shell: bash
+        run: |
+          latestTag=${{ secrets.DOCKER_UNAME }}/app-inventor
+          versionTag=$latestTag:v1
+          docker build -t $latestTag .
+          docker tag $latestTag $versionTag
+          docker push $latestTag
+          docker push $versionTag

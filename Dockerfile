@@ -2,7 +2,7 @@ FROM ubuntu
 
 
 RUN apt-get update 
-RUN apt-get install openjdk-8-jdk git ant 
+RUN apt-get install -y openjdk-8-jdk git ant 
 RUN git submodule update --init 
 RUN apt-get install -y apt-transport-https ca-certificates gnupg curl 
 RUN echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list 

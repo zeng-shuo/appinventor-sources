@@ -7,7 +7,7 @@ WORKDIR /APP
 RUN apt-get update && apt-get install -y openjdk-8-jdk git apt-transport-https ca-certificates gnupg curl && \
     echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
-    apt-get update && apt-get install -y google-cloud-cli google-cloud-sdk
+    apt-get update && apt-get install -y google-cloud-cli
     
 RUN apt-get install -y google-cloud-sdk-app-engine-java 
     

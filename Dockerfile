@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y openjdk-8-jdk git apt-transport-https c
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
     apt-get update && apt-get install -y google-cloud-cli
     
-RUN apt-get install -y google-cloud-sdk-app-engine-java 
+RUN curl https://sdk.cloud.google.com > install.sh && bash install.sh --disable-prompts --install-dir=/home
     
 RUN bash buildtools doctor 
 
@@ -18,4 +18,4 @@ RUN cd appinventor/buildserver && \
 
 EXPOSE 8888
 
-CMD ["/root/google-cloud-sdk/bin/java_dev_appserver.sh","--port=8888","--address=0.0.0.0","appengine/build/war/"]
+CMD ["/home/google-cloud-sdk/bin/java_dev_appserver.sh","--port=8888","--address=0.0.0.0","appengine/build/war/"]

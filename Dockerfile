@@ -16,6 +16,8 @@ RUN bash buildtools doctor
 RUN cd appinventor/buildserver && \
     nohup ant RunLocalBuildServer > build.log 2>&1 &
 
+WORKDIR /APP/appinventor
+
 EXPOSE 8888
 
 CMD ["/home/google-cloud-sdk/bin/java_dev_appserver.sh","--port=8888","--address=0.0.0.0","appengine/build/war/"]

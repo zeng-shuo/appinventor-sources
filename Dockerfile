@@ -17,4 +17,4 @@ WORKDIR /APP/appinventor/buildserver
 
 EXPOSE 8888
 
-CMD ["sh",-c","ant RunLocalBuildServer > build.log 2>&1 & /home/google-cloud-sdk/bin/java_dev_appserver.sh --port=8888 --address=0.0.0.0 /APP/appinventor/appengine/build/war/"]
+CMD ["sh","-c","ant RunLocalBuildServer > build.log 2>&1 & /home/google-cloud-sdk/bin/java_dev_appserver.sh --port=8888 --address=0.0.0.0 /APP/appinventor/appengine/build/war/"]

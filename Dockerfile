@@ -13,6 +13,8 @@ RUN apt-get update && apt-get install -y openjdk-8-jdk git ant apt-transport-htt
 
 WORKDIR /APP/appinventor
 
+RUN cd buildserver && nohup ant RunLocalBuildServer > build.log 2>&1 &
+
 EXPOSE 8888
 
-CMD ["bash -c","cd buildserver && nohup ant RunLocalBuildServer > build.log 2>&1 &","&& echo y | /home/google-cloud-sdk/b/java_dev_appserver.sh --port=8888 --address=0.0.0.0 appengine/build/war/"]
+CMD ["echo y | /home/google-cloud-sdk/b/java_dev_appserver.sh","--port=8888","--address=0.0.0.0","appengine/build/war/"]

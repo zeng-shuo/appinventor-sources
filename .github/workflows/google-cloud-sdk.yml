@@ -1,10 +1,9 @@
-name: build
+name: google
 
 on:
   workflow_dispatch:
 
-
-job:
+jobs:
   test:
     runs-on: ubuntu-latest
     steps:

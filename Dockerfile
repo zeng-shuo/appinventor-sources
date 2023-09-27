@@ -11,10 +11,10 @@ RUN apt-get update && apt-get install -y openjdk-8-jdk git ant apt-transport-htt
     curl https://sdk.cloud.google.com > install.sh && bash install.sh --disable-prompts --install-dir=/home && \
     bash buildtools doctor 
 
-WORKDIR /APP/appinventor
+RUN echo y | /home/google-cloud-sdk/bin/java_dev_appserver.sh --port=8888 || true 
 
-RUN cd buildserver && nohup ant RunLocalBuildServer > build.log 2>&1 &
+WORKDIR /APP/appinventor/buildserver
 
 EXPOSE 8888
 
-CMD ["echo y | /home/google-cloud-sdk/b/java_dev_appserver.sh","--port=8888","--address=0.0.0.0","appengine/build/war/"]
+CMD ["ant RunLocalBuildServer > build.log 2>&1","&","echo y | /home/google-cloud-sdk/bin/java_dev_appserver.sh --port=8888 --address=0.0.0.0 /APP/appengine/build/war/"]
